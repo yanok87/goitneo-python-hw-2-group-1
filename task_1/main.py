@@ -41,8 +41,7 @@ def change_contact(args, contacts):
         contacts[name] = phone
         print(contacts)
         return "Contact changed."
-    else:
-        print("Name not found")
+    return "Name not found"
 
 
 @input_error
