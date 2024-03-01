@@ -21,7 +21,7 @@ class Phone(Field):
 
     @value.setter
     def value(self, v):
-        if len(v) == 10:
+        if not len(v) == 10:
             raise Exception("Phone number has to be 10 digits")
         else:
             self.value = v"""
@@ -33,8 +33,11 @@ class Record:
         self.phones = []
 
     def add_phone(self, phone):
-        validated_phone = Phone(phone)
-        self.phones.append(validated_phone.value)
+        if len(phone) == 10:
+            validated_phone = Phone(phone)
+            self.phones.append(validated_phone.value)
+        else:
+            raise Exception("Phone number has to be 10 digits")
 
     def remove_phone(self, phone):
         validated_phone = Phone(phone)
@@ -72,8 +75,8 @@ book = AddressBook()
 # Створення запису для John
 john_record = Record("John")
 john_record.add_phone("1111111111")
-john_record.add_phone("55555555559")
-john_record.edit_phone("55555555559", "1112223333")
+john_record.add_phone("5555555555")
+john_record.edit_phone("5555555555", "1112223333")
 # john_record.remove_phone("55555555559")
 
 
